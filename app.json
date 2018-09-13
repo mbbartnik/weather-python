@@ -1,6 +1,6 @@
 {
   "name": "Dialogflow weather bot",
   "description": "Dialogflow webhook demonstration",
-  "repository": "https://github.com/satheshrgs/weather_bot/",
+  "repository": "https://github.com/mbbartnik/weather-python",
   "keywords": ["dialogflow", "Open Weather Map","pyowm","Weather"]
 }

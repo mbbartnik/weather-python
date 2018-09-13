@@ -1,4 +1,3 @@
-import cloud as cloud
 from flask import Flask,request,make_response
 import os,json
 import pyowm
@@ -39,8 +38,8 @@ def processRequest(req):
     wind_res=w.get_wind()
     wind_speed=str(wind_res.get('speed'))
 
-    cloud_result = w.get_clouds()
-    cloud = str(cloud_result.get('name'))
+    #cloud_result = w.get_clouds()
+    #cloud = str(cloud_result.get('name'))
     
     humidity=str(w.get_humidity())
 
@@ -51,12 +50,12 @@ def processRequest(req):
     temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
 
-    speech = "Today the weather in "+city+" is"+cloud+". And the temperature is"+temp_celsius
+    speech = "Today the weather in "+city+" is. And the temperature is"+temp_celsius
     
     return {
         "speech": speech,
         "displayText": speech,
-        "source": "dialogflow-weather"
+        "source": "dialogflow-weather-by-mbbartnik"
         }
     
 if __name__ == '__main__':
