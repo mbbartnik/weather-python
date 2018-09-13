@@ -1,4 +1,3 @@
-import cloud as cloud
 from flask import Flask,request,make_response
 import os,json
 import pyowm
