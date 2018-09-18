@@ -30,6 +30,8 @@ def processRequest(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
+    meta = result.get("metadata")
+    intent = meta.get("intentName")
     observation = owm.weather_at_place(city)
     w = observation.get_weather()
     latlon_res = observation.get_location()
@@ -40,7 +42,8 @@ def processRequest(req):
     wind_speed=str(wind_res.get('speed'))
 
     cloud_result = w.get_clouds()
-    cloud = str(cloud_result.get('name'))
+    #cloud = str(cloud_result.get('name'))
+    cloud = cloud_result
     
     humidity=str(w.get_humidity())
 
@@ -51,7 +54,8 @@ def processRequest(req):
     temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
 
-    speech = "Today the weather in "+city+" is"+cloud+". And the temperature is"+temp_celsius
+    if intent == "weather":
+        speech = "Today the weather in "+city+" is"+cloud+"% coverage"+". And the temperature is"+temp_celsius
     
     return {
         "speech": speech,
