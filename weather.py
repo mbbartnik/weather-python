@@ -46,7 +46,7 @@ def processRequest(req):
 
     cloud_result = str(w.get_clouds())
 
-    detail_info = str(w.get_detailed_status())
+    inf_info = str(w.get_status())
 
     humidity=str(w.get_humidity())
 
@@ -59,7 +59,7 @@ def processRequest(req):
 
     if intent == "weather":
         #speech = "Today the weather in " + city +" is " + cloud_result + "% coverage cloud" + ". The temperature is" + temp_celsius+"°C."
-        speech = "In " + city + " we have " + temp_celsius + " °C." + "The sky is " + detail_info
+        speech = "In " + city + " we have " + temp_celsius + " °C." + "The sky is " + inf_info
 
     if intent == "name":
         if name == "Michael":
