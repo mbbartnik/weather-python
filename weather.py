@@ -30,6 +30,7 @@ def processRequest(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
+    name = parameters.get("given-name")
     meta = result.get("metadata")
     intent = meta.get("intentName")
     observation = owm.weather_at_place(city)
@@ -59,7 +60,18 @@ def processRequest(req):
     if intent == "weather":
         #speech = "Today the weather in " + city +" is " + cloud_result + "% coverage cloud" + ". The temperature is" + temp_celsius+"°C."
         speech = "In " + city + " we have " + temp_celsius + " °C." + "The sky is " + detail_info
-    
+
+    if intent == "name":
+        if name == "Michael":
+            speech = "Hello Michael, today we will talk about since!"
+        elif name == "Filip":
+            speech = "Hello Filip, did you miss me??"
+
+        elif name == "Markus":
+            speech = "Hello my owner! Yes these is me, your robot Pepper!"
+        else :
+            newName = name
+
     return {
         "speech": speech,
         "displayText": speech,
