@@ -33,37 +33,36 @@ def processRequest(req):
     name = str(parameters.get("given-name"))
     meta = result.get("metadata")
     intent = meta.get("intentName")
-    observation = owm.weather_at_place(city)
-    w = observation.get_weather()
-    latlon_res = observation.get_location()
-    lat=str(latlon_res.get_lat())
-    lon=str(latlon_res.get_lon())
-
-    sun = w.get_sunset_time('iso')
-     
-    wind_res = w.get_wind()
-    wind_speed = str(wind_res.get('speed'))
-
-    cloud_result = str(w.get_clouds())
-
-    inf_info = str(w.get_status())
-
-    humidity=str(w.get_humidity())
-
-    celsius_result=w.get_temperature('celsius')
-    temp_celsius=str(celsius_result.get('temp'))
-
-    fahrenheit_result=w.get_temperature('fahrenheit')
-    temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
-    temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
-
     if intent == "weather":
-        #speech = "Today the weather in " + city +" is " + cloud_result + "% coverage cloud" + ". The temperature is" + temp_celsius+"°C."
+        observation = owm.weather_at_place(city)
+        w = observation.get_weather()
+        latlon_res = observation.get_location()
+        lat=str(latlon_res.get_lat())
+        lon=str(latlon_res.get_lon())
+
+        sun = w.get_sunset_time('iso')
+     
+        wind_res = w.get_wind()
+        wind_speed = str(wind_res.get('speed'))
+
+        cloud_result = str(w.get_clouds())
+
+        inf_info = str(w.get_status())
+
+        humidity=str(w.get_humidity())
+
+        celsius_result=w.get_temperature('celsius')
+        temp_celsius=str(celsius_result.get('temp'))
+
+        fahrenheit_result=w.get_temperature('fahrenheit')
+        temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
+        temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
+
         speech = "In " + city + " we have " + temp_celsius + " °C." + "The sky is " + inf_info
 
     if intent == "name":
         if name == "Michael":
-            speech = "Hello Michael, today we will talk about since!"
+            speech = "Hello Michael, today we will talk about sience!"
         elif name == "Filip":
             speech = "Hello Filip, did you miss me??"
 
