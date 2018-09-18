@@ -1,3 +1,4 @@
+# coding=utf-8
 from flask import Flask,request,make_response
 import os,json
 import pyowm
@@ -29,6 +30,8 @@ def processRequest(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
+    metadata = result.get("metadata")
+    intent = metadata.get("intentName")
     observation = owm.weather_at_place(city)
     w = observation.get_weather()
     latlon_res = observation.get_location()
@@ -38,8 +41,9 @@ def processRequest(req):
     wind_res=w.get_wind()
     wind_speed=str(wind_res.get('speed'))
 
-    #cloud_result = w.get_clouds()
+    cloud_result = w.get_clouds()
     #cloud = str(cloud_result.get('name'))
+    cloud = cloud_result
     
     humidity=str(w.get_humidity())
 
@@ -50,8 +54,10 @@ def processRequest(req):
     temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
 
-    speech = "Today the weather in "+city+" is. And the temperature is"+temp_celsius
-    
+    if intent == "weather" :
+
+        speech = "Today the weather in "+city+" is" +cloud+"% coverage"+" And the temperature is"+temp_celsius+"°C"
+
     return {
         "speech": speech,
         "displayText": speech,
