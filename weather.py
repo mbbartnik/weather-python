@@ -42,8 +42,12 @@ def processRequest(req):
     wind_speed=str(wind_res.get('speed'))
 
     cloud_result = w.get_clouds()
+<<<<<<< HEAD
     #cloud = str(cloud_result.get('name'))
     cloud = cloud_result
+=======
+    cloud = str(cloud_result.get('name'))
+>>>>>>> 30c06a0763f7f0083dbbc45fec6619962c5c5eba
     
     humidity=str(w.get_humidity())
 
@@ -54,10 +58,15 @@ def processRequest(req):
     temp_min_fahrenheit=str(fahrenheit_result.get('temp_min'))
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
 
+<<<<<<< HEAD
     if intent == "weather" :
 
         speech = "Today the weather in "+city+" is" +cloud+"% coverage"+" And the temperature is"+temp_celsius+"°C"
 
+=======
+    speech = "Today the weather in "+city+" is"+cloud+". And the temperature is"+temp_celsius
+    
+>>>>>>> 30c06a0763f7f0083dbbc45fec6619962c5c5eba
     return {
         "speech": speech,
         "displayText": speech,
