@@ -40,9 +40,8 @@ def processRequest(req):
     wind_res = w.get_wind()
     wind_speed = str(wind_res.get('speed'))
 
-    cloud_res = w.get_clouds()
-    cloud_result = str(cloud_res.get('name'))
-    
+    cloud_result = str(w.get_clouds())   
+
     humidity=str(w.get_humidity())
 
     celsius_result=w.get_temperature('celsius')
