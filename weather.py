@@ -63,10 +63,11 @@ def processRequest(req):
     if intent == "name":
         if name == "Michael":
             speech = "Hello Michael, today we will talk about sience!"
-        elif name == "Filip":
+
+        elif name == ("Filip" or "Philip"):
             speech = "Hello Filip, did you miss me??"
 
-        elif name == "Markus":
+        elif name == ("Markus" or "Marcus"):
             speech = "Hello my owner! Yes these is me, your robot Pepper!"
         else :
             namedropping = name
