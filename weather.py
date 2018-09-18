@@ -30,7 +30,7 @@ def processRequest(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    name = parameters.get("given-name")
+    name = str(parameters.get("given-name"))
     meta = result.get("metadata")
     intent = meta.get("intentName")
     observation = owm.weather_at_place(city)
