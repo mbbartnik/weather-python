@@ -70,7 +70,8 @@ def processRequest(req):
         elif name == "Markus":
             speech = "Hello my owner! Yes these is me, your robot Pepper!"
         else :
-            newName = name
+            namedropping = name
+            speech = "Nice to meet you "+namedropping
 
     return {
         "speech": speech,
