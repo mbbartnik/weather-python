@@ -38,12 +38,11 @@ def processRequest(req):
     lat=str(latlon_res.get_lat())
     lon=str(latlon_res.get_lon())
      
-    wind_res=w.get_wind()
-    wind_speed=str(wind_res.get('speed'))
+    wind_res = w.get_wind()
+    wind_speed = str(wind_res.get('speed'))
 
-    #cloud_result = w.get_clouds()
-    #cloud = str(cloud_result.get('name'))
-    cloud = str(w.get_clouds())
+    cloud_res = w.get_clouds()
+    cloud_result = str(cloud_res.get('name'))
     
     humidity=str(w.get_humidity())
 
@@ -55,7 +54,7 @@ def processRequest(req):
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
 
     if intent == "weather":
-        speech = "Today the weather in "+city+" is"+cloud+"% coverage"+". And the temperature is"+temp_celsius
+        speech = "Today the weather in " + city +" is" + cloud_result + "% coverage" + ". And the temperature is" + temp_celsius
     
     return {
         "speech": speech,
